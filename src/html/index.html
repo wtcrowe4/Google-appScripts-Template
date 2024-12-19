@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Google Apps Script</title>
+    <title>Wand Inventory Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -11,22 +11,114 @@
 <body>
     <div class="container">
         <div class="section">
-            <h4>Google Apps Script</h4>
-            <p> Create Google add-ons and web applications with Google Apps Script and modern JavaScript with the
-                starter kit. </p>
-            <p> The starter kit is used by <a href="https://digitalinspiration.com/">Digital Inspiration</a> for
-                building popular Google Workspace add-on including <a
-                    href="https://workspace.google.com/marketplace/app/mail_merge_with_attachments/223404411203">Gmail
-                    Mail Merge</a> and <a
-                    href="https://workspace.google.com/marketplace/app/document_studio/429444628321">Document
-                    Studio</a>. </p>
-            <p> The modern development environment for building Google add-ons and web applications with Google Apps
-                Script and next-generation JavaScript. Uses Babel, Webpack, Google Clasp and ESLint for an efficient
-                workflow. For help, please contact <a href="https://twitter.com/labnol">Amit Agarwal</a>
-                <small>amit@labnol.org</small>
-            </p>
+            <div class="card-panel teal ">
+                <h4 class="center-align white-text">Wand Inventory Management</h4>
+                <p class="center-align white-text">Products submitted are added to inventory. Check the last box if you need to remove from inventory.</p>
+            </div>
+            <!-- <h4>Wand Inventory Management</h4> -->
+            <!-- <p>Form for Updating Premade Inventory</p> -->
+            <div class="section card-panel">   
+                <form>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select title="product">
+                                <option value="" disabled selected>Product</option>
+                                <option value="1">5" Wands</option>
+                                <option value="2">8" Wands</option>
+                                <option value="3">T-Wand</option>
+                                <option value="4">1" Disc</option>
+                                <option value="5">1" Plug</option>
+                                <option value="6">2" Plug</option>
+                                <option value="7">1" Balls</option>
+                                <option value="8">1.5" Balls</option>
+                                <option value="9">Pharm Disc</option>
+                                <option value="10">Card</option>
+                                
+                            </select>
+                            <label>Product</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select title="product">
+                                <option value="" disabled selected>Color</option>
+                                <option value="1">Red</option>
+                                <option value="2">Blue</option>
+                                <option value="3">Yellow</option>
+                                <option value="4">Green</option>
+                                <option value="5">White</option>
+                            </select> 
+                            <label for="color">Color</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <select title="sphere_type">
+                            <option value="" disabled selected>Sphere Type</option>
+                            <option value="1">FE</option>
+                            <option value="2">NON-FE</option>
+                            <option value="3">SS316</option>
+                            <option value="4">SS304</option>
+                            <option value="5">SS440</option>
+                            <option value="6">Al</option>
+                            <option value="7">PORC</option>
+                            <option value="8">SLG</option>
+                            <option value="9">WC</option>
+                            <option value="10">Cu</option>
+                            <option value="11">Birdshot</option>
+                        </select> 
+                        <label for="sphere_type">Sphere Type</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="sphere_size" type="text" class="validate">
+                            <label for="sphere_size">Sphere Size</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="quantity" type="text" class="validate">
+                            <label for="quantity">Quantity</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <label>
+                                <input id="sold" type="checkbox" />
+                                <span>Take out of Inventory</span>
+                                <!-- <label for="sold">Sold</label> -->
+                            </label>
+                            
+                        </div>
+                    </div>
+                </form>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('select');
+      const instances = M.FormSelect.init(elems);
+    });
+
+    // Initialize dynamically generated select elements
+    function initializeDynamicSelects() {
+      const elems = document.querySelectorAll('select');
+      const instances = M.FormSelect.init(elems);
+    }
+</script>
+
+<!-- <p> Create Google add-ons and web applications with Google Apps Script and modern JavaScript with the
+    starter kit. </p>
+<p> The starter kit is used by <a href="https://digitalinspiration.com/">Digital Inspiration</a> for
+    building popular Google Workspace add-on including <a
+        href="https://workspace.google.com/marketplace/app/mail_merge_with_attachments/223404411203">Gmail
+        Mail Merge</a> and <a
+        href="https://workspace.google.com/marketplace/app/document_studio/429444628321">Document
+        Studio</a>. </p>
+<p> The modern development environment for building Google add-ons and web applications with Google Apps
+    Script and next-generation JavaScript. Uses Babel, Webpack, Google Clasp and ESLint for an efficient
+    workflow. For help, please contact <a href="https://twitter.com/labnol">Amit Agarwal</a>
+    <small>amit@labnol.org</small>
+</p> -->
