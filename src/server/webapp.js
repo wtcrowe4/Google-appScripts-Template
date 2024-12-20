@@ -7,9 +7,9 @@ export const doGet = (e) => {
   if (page === 'premade') {
     fileName = 'premade.html';
     title = 'Premade Inventory Management';
-  } else if (page === 'page2') {
-    fileName = 'page2.html';
-    title = 'Page 2';
+  } else if (page === 'order') {
+    fileName = 'order.html';
+    title = 'Update Inventory for Order';
   }
 
   // Pass the function, not just a string

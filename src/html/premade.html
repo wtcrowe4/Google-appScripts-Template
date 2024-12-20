@@ -18,58 +18,55 @@
                 <h4 class="center-align white-text">Premade Inventory Management</h4>
                 <p class="center-align white-text">Products submitted are added to inventory. Check the last box if you need to remove from inventory.</p>
             </div>
-            <!-- <h4>Wand Inventory Management</h4> -->
-            <!-- <p>Form for Updating Premade Inventory</p> -->
             <a href="<?= scriptUrl ?>?page=home" class="btn">Home</a>
             <div class="section card-panel">   
-                <form>
+                <form id="inventoryForm">
                     <div class="row">
                         <div class="input-field col s6">
-                            <select title="product">
+                            <select title="product" id="product">
                                 <option value="" disabled selected>Product</option>
-                                <option value="1">5" Wands</option>
-                                <option value="2">8" Wands</option>
-                                <option value="3">T-Wand</option>
-                                <option value="4">1" Disc</option>
-                                <option value="5">1" Plug</option>
-                                <option value="6">2" Plug</option>
-                                <option value="7">1" Balls</option>
-                                <option value="8">1.5" Balls</option>
-                                <option value="9">Pharm Disc</option>
-                                <option value="10">Card</option>
-                                
+                                <option value="5inWand">5" Wands</option>
+                                <option value="8inWand">8" Wands</option>
+                                <option value="T-Wand">T-Wand</option>
+                                <option value="1inDisc">1" Disc</option>
+                                <option value="1inPlug">1" Plug</option>
+                                <option value="2inPlug">2" Plug</option>
+                                <option value="1inBall">1" Balls</option>
+                                <option value="1.5inBall">1.5" Balls</option>
+                                <option value="PharmDisc">Pharm Disc</option>
+                                <option value="Card">Test Card</option>
                             </select>
                             <label>Product</label>
                         </div>
                         <div class="input-field col s6">
-                            <select title="product">
+                            <select title="color" id="color">
                                 <option value="" disabled selected>Color</option>
-                                <option value="1">Red</option>
-                                <option value="2">Blue</option>
-                                <option value="3">Yellow</option>
-                                <option value="4">Green</option>
-                                <option value="5">White</option>
+                                <option value="Red">Red</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                                <option value="Green">Green</option>
+                                <option value="White">White</option>
                             </select> 
                             <label for="color">Color</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                        <select title="sphere_type">
-                            <option value="" disabled selected>Sphere Type</option>
-                            <option value="1">FE</option>
-                            <option value="2">NON-FE</option>
-                            <option value="3">SS316</option>
-                            <option value="4">SS304</option>
-                            <option value="5">SS440</option>
-                            <option value="6">Al</option>
-                            <option value="7">PORC</option>
-                            <option value="8">SLG</option>
-                            <option value="9">WC</option>
-                            <option value="10">Cu</option>
-                            <option value="11">Birdshot</option>
-                        </select> 
-                        <label for="sphere_type">Sphere Type</label>
+                            <select title="sphere_type" id="sphere_type">
+                                <option value="" disabled selected>Sphere Type</option>
+                                <option value="FE">FE</option>
+                                <option value="NON-FE">NON-FE</option>
+                                <option value="SS316">SS316</option>
+                                <option value="SS304">SS304</option>
+                                <option value="SS440">SS440</option>
+                                <option value="Al">Al</option>
+                                <option value="PORC">PORC</option>
+                                <option value="SLG">SLG</option>
+                                <option value="WC">WC</option>
+                                <option value="Cu">Cu</option>
+                                <option value="Birdshot">Birdshot</option>
+                            </select>
+                            <label>Sphere Type</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="sphere_size" type="text" class="validate">
@@ -90,17 +87,38 @@
                             
                         </div>
                     </div>
+                    
+                    <button type="submit" class="btn">Add</button>
                 </form>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+            </div>
+            <div class="section card-panel">
+                <h5>Submitted Products</h5>
+                <ul id="submissionList"></ul>
+                <button class="btn" onclick="google.script.run.addInventory()">Submit</button>
             </div>
         </div>
     </div>
-</body>
-
-</html>
-
-
-<script>
+    
+    <script>
+    document.getElementById('inventoryForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+    
+      const product = document.getElementById('product').value;
+      const color = document.getElementById('color').value;
+      const sphereType = document.getElementById('sphere_type').value;
+      const sphereSize = document.getElementById('sphere_size').value;
+      const quantity = document.getElementById('quantity').value;
+      const sold = document.getElementById('sold').checked;
+      const displayQuantity = sold ? `-${quantity}` : quantity;
+      const submissionList = document.getElementById('submissionList');
+      const listItem = document.createElement('li');
+      listItem.textContent = `${displayQuantity} - ${product} ${color} ${sphereType} ${sphereSize}mm`;
+      submissionList.appendChild(listItem);
+    
+      // Optionally, reset the form
+      this.reset();
+    });
+    
     document.addEventListener('DOMContentLoaded', function () {
       const elems = document.querySelectorAll('select');
       const instances = M.FormSelect.init(elems);
