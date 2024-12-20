@@ -2,21 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>Wand Inventory Management</title>
+    <base target="_top">
+    <title>Premade Inventory Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
+    <!-- Capture the script URL in a local variable -->
+    <? var scriptUrl = getScriptUrl(); ?>
     <div class="container">
         <div class="section">
             <div class="card-panel teal ">
-                <h4 class="center-align white-text">Wand Inventory Management</h4>
+                <h4 class="center-align white-text">Premade Inventory Management</h4>
                 <p class="center-align white-text">Products submitted are added to inventory. Check the last box if you need to remove from inventory.</p>
             </div>
             <!-- <h4>Wand Inventory Management</h4> -->
             <!-- <p>Form for Updating Premade Inventory</p> -->
+            <a href="<?= scriptUrl ?>?page=home" class="btn">Home</a>
             <div class="section card-panel">   
                 <form>
                     <div class="row">
