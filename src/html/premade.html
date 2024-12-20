@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../scripts/premade.js"></script>
 </head>
 
 <body>
@@ -92,33 +93,15 @@
                 </form>
             </div>
             <div class="section card-panel">
-                <h5>Submitted Products</h5>
+                <h5>Product List</h5>
                 <ul id="submissionList"></ul>
-                <button class="btn" onclick="google.script.run.addInventory()">Submit</button>
+                <button class="btn" id="updateInventory">Submit</button>
             </div>
         </div>
     </div>
     
-    <script>
-    document.getElementById('inventoryForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-    
-      const product = document.getElementById('product').value;
-      const color = document.getElementById('color').value;
-      const sphereType = document.getElementById('sphere_type').value;
-      const sphereSize = document.getElementById('sphere_size').value;
-      const quantity = document.getElementById('quantity').value;
-      const sold = document.getElementById('sold').checked;
-      const displayQuantity = sold ? `-${quantity}` : quantity;
-      const submissionList = document.getElementById('submissionList');
-      const listItem = document.createElement('li');
-      listItem.textContent = `${displayQuantity} - ${product} ${color} ${sphereType} ${sphereSize}mm`;
-      submissionList.appendChild(listItem);
-    
-      // Optionally, reset the form
-      this.reset();
-    });
-    
+</body>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
       const elems = document.querySelectorAll('select');
       const instances = M.FormSelect.init(elems);
@@ -129,18 +112,6 @@
       const elems = document.querySelectorAll('select');
       const instances = M.FormSelect.init(elems);
     }
-</script>
+</script> 
 
-<!-- <p> Create Google add-ons and web applications with Google Apps Script and modern JavaScript with the
-    starter kit. </p>
-<p> The starter kit is used by <a href="https://digitalinspiration.com/">Digital Inspiration</a> for
-    building popular Google Workspace add-on including <a
-        href="https://workspace.google.com/marketplace/app/mail_merge_with_attachments/223404411203">Gmail
-        Mail Merge</a> and <a
-        href="https://workspace.google.com/marketplace/app/document_studio/429444628321">Document
-        Studio</a>. </p>
-<p> The modern development environment for building Google add-ons and web applications with Google Apps
-    Script and next-generation JavaScript. Uses Babel, Webpack, Google Clasp and ESLint for an efficient
-    workflow. For help, please contact <a href="https://twitter.com/labnol">Amit Agarwal</a>
-    <small>amit@labnol.org</small>
-</p> -->
+</html>
